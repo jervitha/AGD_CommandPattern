@@ -19,7 +19,7 @@ namespace Command.Actions
             actorUnit.PlayBattleAnimation(ActionType.Attack, CalculateMovePosition(targetUnit), OnActionAnimationCompleted);
         }
 
-        public void OnActionAnimationCompleted() 
+        public void OnActionAnimationCompleted()
         {
             PlayAttackSound();
 
@@ -35,7 +35,7 @@ namespace Command.Actions
 
         private void PlayAttackSound()
         {
-            switch(actorUnit.UnitType)
+            switch (actorUnit.UnitType)
             {
                 case UnitType.WIZARD:
                     GameService.Instance.SoundService.PlaySoundEffects(Sound.SoundType.MAGIC_BALL);
@@ -53,5 +53,6 @@ namespace Command.Actions
                     break;
             }
         }
-    }
+
+     }
 }
