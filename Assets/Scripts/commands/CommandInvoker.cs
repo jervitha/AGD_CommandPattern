@@ -1,34 +1,20 @@
-using System.Collections;
+using Command.Main;
 using System.Collections.Generic;
-using UnityEngine;
 
-/// <summary>
-/// A class responsible for invoking and managing commands.
-/// </summary>
-public class CommandInvoker
+namespace Command.Commands
 {
-    // A stack to keep track of executed commands.
-    private Stack<ICommand> commandRegistry = new Stack<ICommand>();
-
-    /// <summary>
-    /// Process a command, which involves both executing it and registering it.
-    /// </summary>
-    /// <param name="commandToProcess">The command to be processed.</param>
-    public void ProcessCommand(ICommand commandToProcess)
+    public class CommandInvoker
     {
-        ExecuteCommand(commandToProcess);
-        RegisterCommand(commandToProcess);
+        private Stack<ICommand> commandRegistry = new Stack<ICommand>();
+
+        public void ProcessCommand(ICommand commandToProcess)
+        {
+            ExecuteCommand(commandToProcess);
+            RegisterCommand(commandToProcess);
+        }
+
+        public void ExecuteCommand(ICommand commandToExecute) => commandToExecute.Execute();
+
+        public void RegisterCommand(ICommand commandToRegister) => commandRegistry.Push(commandToRegister);
     }
-
-    /// <summary>
-    /// Execute a command, invoking its associated action.
-    /// </summary>
-    /// <param name="commandToExecute">The command to be executed.</param>
-    public void ExecuteCommand(ICommand commandToExecute) => commandToExecute.Execute();
-
-    /// <summary>
-    /// Register a command by adding it to the command registry stack.
-    /// </summary>
-    /// <param name="commandToRegister">The command to be registered.</param>
-    public void RegisterCommand(ICommand commandToRegister) => commandRegistry.Push(commandToRegister);
 }
