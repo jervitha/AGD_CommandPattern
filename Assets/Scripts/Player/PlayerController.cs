@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Command.Commands;
 using UnityEngine;
 
 namespace Command.Player
@@ -81,6 +82,7 @@ namespace Command.Player
             units.ForEach(unit => unit.Destroy());
             units.Clear();
         }
+        public void ProcessUnitCommand(UnitCommand commandToProcess) => GetUnitByID(commandToProcess.commandData.ActorUnitID).ProcessUnitCommand(commandToProcess);
 
         // TODO:    What is this??
         public void ResetCurrentActivePlayer()
