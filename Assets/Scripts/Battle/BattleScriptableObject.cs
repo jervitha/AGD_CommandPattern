@@ -1,4 +1,4 @@
-susing UnityEngine;
+using UnityEngine;
 using Command.Player;
 
 namespace Command.Battle
