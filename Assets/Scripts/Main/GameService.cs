@@ -10,7 +10,7 @@ using Command.Battle;
 using Command.Actions;
 using UnityEngine.UI;
 using Command.Commands;
-
+using Command.Replay;
 namespace Command.Main
 {
 
@@ -28,6 +28,7 @@ namespace Command.Main
         public ActionService ActionService { get; private set; }
         public InputService InputService { get; private set; }
         public BattleService BattleService { get; private set; }
+        public ReplayService ReplayService { get; private set; }
         public PlayerService PlayerService { get; private set; }
         public CommandInvoker CommandInvoker { get; private set; }
 
@@ -52,6 +53,7 @@ namespace Command.Main
             PlayerService = new PlayerService();
             uiService.Init(battleScriptableObjects.Count);
             CommandInvoker = new CommandInvoker();
+            ReplayService = new ReplayService();
         }
 
         private void Update() => InputService.UpdateInputService();

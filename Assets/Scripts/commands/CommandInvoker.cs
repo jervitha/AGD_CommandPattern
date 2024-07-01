@@ -23,6 +23,12 @@ namespace Command.Commands
                 commandRegistry.Pop().Undo();
         }
 
+        public void SetReplayStack()
+        {
+            GameService.Instance.ReplayService.SetCommandStack(commandRegistry);
+            commandRegistry.Clear();
+        }
+
         private bool RegistryEmpty() => commandRegistry.Count == 0;
 
         private bool CommandBelongsToActivePlayer() => (commandRegistry.Peek() as UnitCommand).commandData.ActorPlayerID == GameService.Instance.PlayerService.ActivePlayerID;
